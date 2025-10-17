@@ -40,6 +40,7 @@ public class CachingBreedFetcher implements BreedFetcher {
         }
         c.put(breed, result);
         return result;
+//        return new ArrayList<>();
     }
 
     public int getCallsMade() {

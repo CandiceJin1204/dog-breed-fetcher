@@ -30,9 +30,9 @@ public class Main {
             List<String> subBreed = breedFetcher.getSubBreeds(breed);
             return subBreed.size();
         }catch (BreedFetcher.BreedNotFoundException e){
-            return -1;
+            return 0;
         }
-
         // return statement included so that the starter code can compile and run.
+//        return -1;
     }
 }
