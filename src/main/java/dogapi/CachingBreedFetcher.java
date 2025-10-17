@@ -24,7 +24,6 @@ public class CachingBreedFetcher implements BreedFetcher {
 
     @Override
     public List<String> getSubBreeds(String breed) throws BreedNotFoundException {
-        // return statement included so that the starter code can compile and run.
         if (breed == null){
             throw new BreedNotFoundException(breed);
         }
@@ -40,6 +39,7 @@ public class CachingBreedFetcher implements BreedFetcher {
         }
         c.put(breed, result);
         return result;
+//        return new ArrayList<>();
     }
 
     public int getCallsMade() {
