@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class DogApiBreedFetcher implements BreedFetcher {
         try {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
-            String status = responseBody.optString("status", "");
+            String status = responseBody.getString("status");
             if (!"success".equals(status)) {
                 throw new BreedNotFoundException(breed);
             }
@@ -50,8 +51,9 @@ public class DogApiBreedFetcher implements BreedFetcher {
             return result;
         } catch (IOException e) {
             throw new BreedNotFoundException(breed);
+        }catch (JSONException e) {
+            throw new BreedNotFoundException(breed);
         }
         // return statement included so that the starter code can compile and run.
-//        return new ArrayList<>();
     }
 }
